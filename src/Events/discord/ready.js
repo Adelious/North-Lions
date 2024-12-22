@@ -7,7 +7,7 @@ module.exports = {
 	async execute(client) {
 		await client.user.setPresence({
 			activities: [{
-				name: 'Simple Roleplay',
+				name: 'SinCity RP',
 				type: ActivityType.Playing,
 			}],
 			status: 'dnd',
