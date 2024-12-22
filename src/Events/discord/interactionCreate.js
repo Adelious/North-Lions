@@ -148,7 +148,7 @@ module.exports = {
 
         await channel.send({ embeds: [embed], components: [button] });
 
-        channel.send('➔ ** Informations**\n- Nom :\n- Prénom :\n- Âge :\n\n- De quelle organisations aviez vous fait parti avant ?\n- Pour quel motif l\'aviez vous quittée ?\n- Temps de jeu (Minimum 100h)( screenshot à l\'appui ) :\n- Image de vos avertissements ( screenshot à l\'appui ) :\n- Disponibilité :\n- Qualité / Défauts :\n\n➔ ** Candidature **\n- Motivations:\n- Pourquoi la Viper et pas une autre ? :\n- Pourquoi vous choisir ? :\n- Que représente la Viper pour vous ? :\n\n➔ **Information(s) supplémentaire(s) ** :\n- Description de vous ( attitude / conduite / comportement ... ) :');
+        channel.send('➔ ** Informations**\n- Nom :\n- Prénom :\n- Âge :\n\n- Disponibilité :\n- Qualité / Défauts :\n\n➔ ** Candidature **\n- Motivations:\n- Pourquoi les Lions et pas une autre ? :\n- Pourquoi vous choisir ? :\n- Que représente la MC pour vous ? :\n\n➔ **Information(s) supplémentaire(s) ** :\n- Description de vous ( attitude / conduite / comportement ... ) :');
 
       }
 
