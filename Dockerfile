@@ -1,39 +1,17 @@
-#FROM node:alpine
-
-#WORKDIR /usr/src/app/
-
-#COPY package*.json ./
-
-#RUN npm install
-
-#COPY . .
-
-#CMD [ "node", "./src/index.js" ]
-
-
 # Utiliser une image Node.js alpine
 FROM node:alpine
 
 # Définir le répertoire de travail
 WORKDIR /usr/src/app/
 
-# Installer les outils nécessaires
-RUN apk add --no-cache git
+# Installer git et bash (bash est facultatif, mais pratique pour les scripts avancés)
+RUN apk add --no-cache git bash
 
-# Ajouter un script conditionnel directement dans le Dockerfile
-RUN echo '#!/bin/sh\n' \
-    'if [ ! -d ".git" ]; then\n' \
-    '  echo "Le dépôt Git n\'existe pas, clonage en cours...";\n' \
-    '  git clone https://github.com/Adelious/North-Lions.git .;\n' \
-    'else\n' \
-    '  echo "Le dépôt Git existe, mise à jour en cours...";\n' \
-    '  git pull;\n' \
-    'fi;\n' \
-    'echo "Installation des dépendances npm...";\n' \
-    'npm install;\n' \
-    'echo "Lancement de l\'application...";\n' \
-    'node src/index.js;' \
-    > /usr/src/app/entrypoint.sh && chmod +x /usr/src/app/entrypoint.sh
+# Copier le script d'entrée dans l'image
+COPY entrypoint.sh /usr/src/entrypoint.sh
 
-# Commande pour exécuter l'application
-CMD ["sh", "/usr/src/app/entrypoint.sh"]
+# Donner les permissions d'exécution au script
+RUN chmod +x /usr/src/entrypoint.sh
+
+# Commande pour exécuter le script d'entrée
+ENTRYPOINT ["/usr/src/entrypoint.sh"]
