@@ -12,4 +12,4 @@ RUN apk add --no-cache git && \
 RUN npm install
 
 # Lancer l'application
-CMD [ "node", "./src/index.js" ]
+CMD [ "node", "/src/index.js" ]
