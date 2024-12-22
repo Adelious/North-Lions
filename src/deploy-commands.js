@@ -6,7 +6,6 @@ require("dotenv").config();
 
 const { GUILD_ID, CLIENT_ID } = require("./config.json");
 
-
 const commands = [];
 // Grab all the command files from the commands directory you created earlier
 const foldersPath = path.join(__dirname, "commands");

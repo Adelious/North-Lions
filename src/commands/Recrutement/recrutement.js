@@ -3,12 +3,14 @@ const { EmbedBuilder, Colors, ActionRowBuilder, ButtonBuilder, ButtonStyle, Slas
 module.exports = {
   data: new SlashCommandBuilder().setName("recrutement").setDescription("Création de l'embed de recrutement"),
   async execute(interaction) {
-    if (!interaction.guild.members.cache.get(interaction.user.id).permissions.has(PermissionFlagsBits.Administrator)) return interaction.reply({content: 'Vous ne pouvez pas utiliser cette commande', ephemeral: true});
+    if (!interaction.guild.members.cache.get(interaction.user.id).permissions.has(PermissionFlagsBits.Administrator)){
+      return interaction.reply({content: 'Vous ne pouvez pas utiliser cette commande', ephemeral: true});
+    }
     let embed = new EmbedBuilder()
       .setColor(Colors.Purple)
       .setTitle("Candidater")
       .setThumbnail(interaction.client.user.displayAvatarURL({ dynamic: true }))
-      .setDescription("Des questions vous seront posées afin de mieux vous connaitre.")
+      .setDescription("En cliquand vous effectuerez une candidature pour rejoindre la North-Lions.\n Il est important de prendre en compte que vous passerez un questionnaire.\n\nTout abus sera sanctionné.")
       .setTimestamp()
       .setFooter({
         text: interaction.client.user.username,

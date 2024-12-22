@@ -1,8 +1,8 @@
 {
   "GUILD_ID" : "1299132094621941873",
   "CLIENT_ID" : "1320183744107253914",
-  "commandeCategoryID" : "1319533416269742080",
-  "commandeArchiveCategoryID" : "1320192542603481139",
+  "rdvCategoryID" : "1319533416269742080",
+  "rdvArchiveCategoryID" : "1320192542603481139",
   "recrutementCategoryID" : "1319533676240830474",
   "recrutementArchiveCategoryID" : "1320192542603481139"
 }

@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { commandeCategoryID, commandeArchiveCategoryID, recrutementArchiveCategoryID, recrutementCategoryID } = require("../../config.json");
+const { rdvCategoryID, rdvArchiveCategoryID, recrutementArchiveCategoryID, recrutementCategoryID } = require("../../config.json");
 
 module.exports = {
   name: Discord.Events.InteractionCreate,
@@ -23,15 +23,15 @@ module.exports = {
     }
 
     if (interaction.isButton()) {
-      // Ticket de support
+      // Ticket de rendez-vous
 
-      if (interaction.customId === "ticket") {
+      if (interaction.customId === "rdv") {
         let channel = await interaction.guild.channels.create({
-          name: `ticket-${interaction.user.username}`,
+          name: `rdv-${interaction.user.username}`,
           type: Discord.ChannelType.GuildText,
         });
 
-        await channel.setParent(commandeCategoryID);
+        await channel.setParent(rdvCategoryID);
 
         await channel.permissionOverwrites.create(interaction.user.id, {
           ViewChannel: true,
@@ -54,7 +54,7 @@ module.exports = {
           .setThumbnail(
             interaction.client.user.displayAvatarURL({ dynamic: true })
           )
-          .setDescription("ticket crée")
+          .setDescription("Demande créée avec succès")
           .setTimestamp()
           .setFooter({
             text: interaction.client.user.username,
@@ -66,8 +66,8 @@ module.exports = {
 
         const button = new Discord.ActionRowBuilder().addComponents(
           new Discord.ButtonBuilder()
-            .setCustomId("close-ticket")
-            .setLabel("fermer le ticket")
+            .setCustomId("close-rdv")
+            .setLabel("fermer la demande")
             .setStyle(Discord.ButtonStyle.Danger)
             .setEmoji("🗑️")
         );
@@ -75,25 +75,25 @@ module.exports = {
         await channel.send({ embeds: [embed], components: [button] });
       }
 
-      if (interaction.customId === "close-ticket") {
+      if (interaction.customId === "close-rdv") {
         let user = interaction.client.users.cache.get(
           interaction.channel.topic
         );
         try {
           try {
-            await user.send("Votre demande a été fermé");
+            await user.send("Votre demande a été fermée !");
           } catch (err){
             console.error(err);
           }
           await interaction.reply({
-            content: "Le demande a été fermé",
+            content: "Le demande a été fermée !",
             ephemeral: true,
           });
         } catch (error) {
           console.error(error);
         }
 
-        await interaction.channel.setParent(commandeArchiveCategoryID);
+        await interaction.channel.setParent(rdvArchiveCategoryID);
 
       }
 
