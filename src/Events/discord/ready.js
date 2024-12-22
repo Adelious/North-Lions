@@ -1,5 +1,5 @@
 const { Events, ActivityType } = require('discord.js');
-require("dotenv").config();
+const { GUILD_ID } = require("../../../config.json");
 
 module.exports = {
 	name: Events.ClientReady,
@@ -13,7 +13,7 @@ module.exports = {
 			status: 'dnd',
 		  })
 		  
-		  let guild = client.guilds.cache.get(process.env.GUILD_ID)
+		  let guild = client.guilds.cache.get(GUILD_ID)
 
 		  await guild.commands.fetch()
 		    .then(commands => {
